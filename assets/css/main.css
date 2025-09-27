@@ -1359,18 +1359,19 @@ input, select, textarea {
 				
 #header nav ul li a {
     display: block;
-    min-width: 9.5rem;        /* increased from 7.5rem */
-    height: auto;             /* allow flexible height */
+    min-width: 9.5rem;
+    height: auto;
     line-height: 2.75rem;
-    padding: 0.9rem 1.25rem;  /* slightly more padding */
+    padding: 0.9rem 1.25rem;   /* same left and right */
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     font-size: 0.8rem;
     border-bottom: 0;
-    white-space: normal;      /* allow wrapping */
-    word-break: break-word;   /* break long words if needed */
-    text-align: center;       /* center-align text */
+    white-space: normal;
+    word-break: break-word;
+    text-align: center;        /* ensures true centering */
 }
+
 
 
 					#header nav ul li a:hover {
