@@ -1358,20 +1358,27 @@ input, select, textarea {
 
 				
 #header nav ul li a {
-    display: block;
-    min-width: 9.5rem;        /* increased from 7.5rem */
-    height: auto;             /* allow flexible height */
-    line-height: 2.75rem;
-    padding: 0.9rem 1.25rem;  /* slightly more padding */
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
-    font-size: 0.8rem;
-    border-bottom: 0;
-    white-space: normal;      /* allow wrapping */
-    word-break: break-word;   /* break long words if needed */
-    text-align: center;       /* center-align text */
+  display: block;
+  min-width: 10.5rem;      /* wider so “Partnerships” fits on one line */
+  height: 2.75rem;
+  line-height: 2.75rem;
+  padding: 0 1.35rem;      /* equal L/R padding → true centering */
+  text-transform: uppercase;
+	flex-wrap: nowrap;  /* prevent wrapping into a second row */
+  letter-spacing: 0.2rem;
+  font-size: 0.8rem;
+  border-bottom: 0;
+  white-space: nowrap;     /* keep titles on one line (stay horizontal) */
+  text-align: center;      /* visual centering in the box */
 }
 
+#header nav ul {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  /* … */
+}
 
 					#header nav ul li a:hover {
 						background-color: rgba(255, 255, 255, 0.075);
