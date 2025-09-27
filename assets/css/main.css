@@ -1681,3 +1681,43 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
+/* === Background video overrides === */
+
+/* Remove the static image layer (we keep the dark overlay in ::before) */
+#bg:after {
+  background-image: none !important;
+}
+
+/* Make the video fill the viewport like the old background image */
+#bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%) scale(1.125); /* match original scale */
+  object-fit: cover;   /* maintain cover behavior */
+  z-index: 1;          /* sits under the ::before overlay */
+}
+
+/* Keep the dark gradient/overlay from the theme (already on ::before) */
+/* Optional: if you want overlay a bit darker for video, you can tweak opacity: */
+/*
+#bg:before {
+  opacity: 0.6;  // default ~0.5
+}
+*/
+
+/* When an article opens, mimic the template’s subtle zoom + blur */
+body.is-article-visible #bg video {
+  transform: translate(-50%, -50%) scale(1.0825);
+  filter: blur(0.2rem);
+}
+
+/* While preloading, keep a quick fade/black like the original */
+body.is-preload #bg:before {
+  background-color: #000000;
+}
