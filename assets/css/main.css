@@ -1753,3 +1753,26 @@ body.is-article-visible #bg video {
   filter: blur(0.2rem);
 }
 
+/* === Background video hard fixes === */
+#bg { overflow: hidden; }
+
+#bg:after {
+  display: none !important;         /* kill the static image layer that sits over the video */
+  background-image: none !important;
+}
+
+#bg video {
+  position: fixed;                  /* sit like a true background */
+  top: 0;
+  left: 0;
+  width: 100vw;                     /* cover the viewport */
+  height: 100vh;
+  object-fit: cover;                /* crop to fill without squeezing */
+  z-index: 1;                       /* under the overlay (::before) which is z-index:2 */
+}
+
+/* keep the theme’s overlay (::before) and preloader behavior */
+body.is-article-visible #bg video {
+  filter: blur(0.2rem);
+  transform: none;                  /* no extra scale needed with fixed sizing */
+}
