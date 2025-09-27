@@ -1721,3 +1721,35 @@ body.is-article-visible #bg video {
 body.is-preload #bg:before {
   background-color: #000000;
 }
+
+/* === Background video: visibility + stacking fixes === */
+#bg {
+  overflow: hidden; /* ensures no scrollbars if video scales */
+}
+
+/* Keep the dark overlay (::before) but disable the image layer (::after) */
+#bg:after {
+  display: none !important;     /* prevents it from covering the video */
+  background-image: none !important;
+}
+
+/* Make the video fill the viewport and sit under the overlay */
+#bg video {
+  position: absolute;           /* inside fixed #bg */
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%) scale(1.125); /* match template zoom */
+  object-fit: cover;
+  z-index: 1;                   /* under ::before (overlay), visible */
+}
+
+/* Keep the template's zoom/blur when an article is open */
+body.is-article-visible #bg video {
+  transform: translate(-50%, -50%) scale(1.0825);
+  filter: blur(0.2rem);
+}
+
