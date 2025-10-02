@@ -1358,27 +1358,21 @@ input, select, textarea {
 
 				
 #header nav ul li a {
-  display: block;
-  min-width: 10.5rem;      /* wider so “Partnerships” fits on one line */
-  height: 2.75rem;
-  line-height: 2.75rem;
-  padding: 0 1.35rem;      /* equal L/R padding → true centering */
-  text-transform: uppercase;
-	flex-wrap: nowrap;  /* prevent wrapping into a second row */
-  letter-spacing: 0.2rem;
-  font-size: 0.8rem;
-  border-bottom: 0;
-  white-space: nowrap;     /* keep titles on one line (stay horizontal) */
-  text-align: center;      /* visual centering in the box */
+    display: block;
+    min-width: 9.5rem;
+    height: auto;
+    line-height: 2.75rem;
+    padding: 0.9rem 1.25rem;   /* same left and right */
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+    border-bottom: 0;
+    white-space: normal;
+    word-break: break-word;
+    text-align: center;        /* ensures true centering */
 }
 
-#header nav ul {
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  /* … */
-}
+
 
 					#header nav ul li a:hover {
 						background-color: rgba(255, 255, 255, 0.075);
@@ -1681,98 +1675,3 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
-
-/* === Background video overrides === */
-
-/* Remove the static image layer (we keep the dark overlay in ::before) */
-#bg:after {
-  background-image: none !important;
-}
-
-/* Make the video fill the viewport like the old background image */
-#bg video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%) scale(1.125); /* match original scale */
-  object-fit: cover;   /* maintain cover behavior */
-  z-index: 1;          /* sits under the ::before overlay */
-}
-
-/* Keep the dark gradient/overlay from the theme (already on ::before) */
-/* Optional: if you want overlay a bit darker for video, you can tweak opacity: */
-/*
-#bg:before {
-  opacity: 0.6;  // default ~0.5
-}
-*/
-
-/* When an article opens, mimic the template’s subtle zoom + blur */
-body.is-article-visible #bg video {
-  transform: translate(-50%, -50%) scale(1.0825);
-  filter: blur(0.2rem);
-}
-
-/* While preloading, keep a quick fade/black like the original */
-body.is-preload #bg:before {
-  background-color: #000000;
-}
-
-/* === Background video: visibility + stacking fixes === */
-#bg {
-  overflow: hidden; /* ensures no scrollbars if video scales */
-}
-
-/* Keep the dark overlay (::before) but disable the image layer (::after) */
-#bg:after {
-  display: none !important;     /* prevents it from covering the video */
-  background-image: none !important;
-}
-
-/* Make the video fill the viewport and sit under the overlay */
-#bg video {
-  position: absolute;           /* inside fixed #bg */
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%) scale(1.125); /* match template zoom */
-  object-fit: cover;
-  z-index: 1;                   /* under ::before (overlay), visible */
-}
-
-/* Keep the template's zoom/blur when an article is open */
-body.is-article-visible #bg video {
-  transform: translate(-50%, -50%) scale(1.0825);
-  filter: blur(0.2rem);
-}
-
-/* === Background video hard fixes === */
-#bg { overflow: hidden; }
-
-#bg:after {
-  display: none !important;         /* kill the static image layer that sits over the video */
-  background-image: none !important;
-}
-
-#bg video {
-  position: fixed;                  /* sit like a true background */
-  top: 0;
-  left: 0;
-  width: 100vw;                     /* cover the viewport */
-  height: 100vh;
-  object-fit: cover;                /* crop to fill without squeezing */
-  z-index: 1;                       /* under the overlay (::before) which is z-index:2 */
-}
-
-/* keep the theme’s overlay (::before) and preloader behavior */
-body.is-article-visible #bg video {
-  filter: blur(0.2rem);
-  transform: none;                  /* no extra scale needed with fixed sizing */
-}
