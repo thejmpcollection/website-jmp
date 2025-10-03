@@ -4,6 +4,15 @@
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="693.000000pt" height="693.000000pt" viewBox="0 0 693.000000 693.000000"
  preserveAspectRatio="xMidYMid meet">
+ 
+<style>
+  @media (prefers-color-scheme: dark) {
+    path { fill: white !important; }
+  }
+  @media (prefers-color-scheme: light) {
+    path { fill: black !important; }
+  }
+</style>
 
 <g transform="translate(0.000000,693.000000) scale(0.100000,-0.100000)"
 fill="#000000" stroke="none">
@@ -26,14 +35,4 @@ m817 -59 c150 -32 272 -149 330 -317 20 -58 23 -86 23 -212 0 -122 -4 -156
 -25 -115 -56 l-110 -57 7 -56 c31 -250 261 -439 569 -467 134 -12 319 32 422
 100 159 106 243 265 263 501 6 68 11 396 11 758 l0 637 -115 0 -114 0 -3 -752z"/>
 </g>
-
- <style>
-  @media (prefers-color-scheme: dark) {
-    path, circle, rect, polygon { fill: white !important; stroke: white !important; }
-  }
-  @media (prefers-color-scheme: light) {
-    path, circle, rect, polygon { fill: black !important; stroke: black !important; }
-  }
-</style>
- 
 </svg>
